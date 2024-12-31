@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environmental Encyclopedia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e8f5e9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero {
+            background: linear-gradient(to left, #236741, #3eb975);
+            color: white ;
+            padding: 100px ;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+        }
+
+        .list-group-item {
+            padding: 30px;
+            border: none;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
+            border-radius: 30px;
+            margin-bottom: 15px;
+            background: #ffffff;
+        }
+
+        .list-group-item h5 {
+            color: #2e8b57;
+            font-weight: 600;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background: #2e8b57;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .btn-primary {
+            background-color: #3cb371;
+            border-color: #3cb371;
+        }
+
+        .btn-primary:hover {
+            background-color: #2e8b57;
+        }
+
+        .btn-success {
+            background-color: #297d4d;
+            border-color: #297d4d;
+        }
+
+        .btn-success:hover {
+            background-color: #3cb371;
+        }
+
+        .navbar {
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .bg-light {
+            background: #f0f8f5 !important;
+        }
+
+        .text-center h2 {
+            color: #2e8b57;
+            font-weight: bold;
+        }
+
+        .highlight {
+            color: #3cb371;
+            font-weight: bold;
+        }
+
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3cb371;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            cursor: pointer;
+        }
+
+        .floating-btn:hover {
+            background: #237245;
+        }
+    </style>
+
+<script>
+    function filterItems() {
+        const searchValue = document.getElementById('searchBar').value.toLowerCase();
+        const plantItems = document.querySelectorAll('#plantList .list-group-item');
+        const animalItems = document.querySelectorAll('#animalList .list-group-item');
+
+        plantItems.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            item.style.display = text.includes(searchValue) ? '' : 'none';
+        });
+
+        animalItems.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            item.style.display = text.includes(searchValue) ? '' : 'none';
+        });
+    }
+</script>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Environmental Encyclopedia</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#plants">Plants</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#animals">Animals</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#signin">Sign In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#signup">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Welcome to the <span class="highlight">Environmental Encyclopedia</span></h1>
+            <p>Explore the fascinating world of plants and animals, and discover the beauty of nature.</p>
+        </div>
+    </section>
+
+    <div class="container py-4"> <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="Search for plants or animals" id="searchBar"> <button class="btn btn-outline-success" type="button" onclick="filterItems()">Search</button> </div> </div>
+
+    <section id="plants" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Plants</h2>
+            <ul class="list-group" id="plantList">
+                    <li class="list-group-item">
+                        <h5>Oak Tree</h5>
+                        <p>Oak trees are large deciduous trees known for their strength, resilience, and long lifespan. They provide shelter to numerous animals and are critical in ecosystems worldwide.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5>Rose</h5>
+                        <p>Roses are iconic flowering plants admired for their beauty and fragrance. They symbolize love and have been cultivated for centuries in gardens worldwide.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5>Bamboo</h5>
+                        <p>Bamboo is a fast-growing grass species often used in construction and as a renewable resource. It is also an essential food source for pandas.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5>Maple Tree</h5>
+                        <p>Known for their vibrant fall foliage, maple trees are a symbol of beauty and provide the sap for maple syrup production.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5>Sunflower</h5>
+                        <p>Sunflowers are bright, cheerful plants that turn their faces to follow the sun. They are cultivated for seeds and oil.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5>Cactus</h5>
+                        <p>Cacti are desert plants known for their ability to store water and thrive in arid environments. They play a vital role in desert ecosystems.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5>Lily</h5>
+                        <p>Lilies are elegant flowering plants often associated with purity and devotion. They are a popular choice for gardens and floral arrangements.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5>Mangrove Tree</h5>
+                        <p>Mangrove trees grow in coastal areas and are crucial for protecting shorelines from erosion and providing habitats for diverse marine life.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5>Fern</h5>
+                        <p>Ferns are ancient plants that thrive in shaded, moist environments. Their delicate fronds add beauty to forests and gardens alike.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5>Lavender</h5>
+                        <p>Lavender is a fragrant herb widely used for its calming properties and in aromatherapy. Its purple flowers are a favorite in gardens.</p>
+                    </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="animals" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Animals</h2>
+            <ul class="list-group" id="animalList">
+                <li class="list-group-item">
+                    <h5>Tiger</h5>
+                    <p>Tigers are large carnivorous cats known for their striking orange and black stripes. They are apex predators in their habitats.</p>
+                </li>
+                <li class="list-group-item">
+                    <h5>Elephant</h5>
+                    <p>Elephants are the largest land animals, renowned for their intelligence, social structure, and ability to shape ecosystems.</p>
+                </li>
+                <li class="list-group-item">
+                    <h5>Dolphin</h5>
+                    <p>Dolphins are intelligent marine mammals known for their playful behavior, echolocation abilities, and strong social bonds.</p>
+                </li>
+                <li class="list-group-item">
+                    <h5>Panda</h5>
+                    <p>Pandas are black-and-white bears famous for their love of bamboo and their status as a symbol of wildlife conservation.</p>
+                </li>
+                <li class="list-group-item">
+                    <h5>Lion</h5>
+                    <p>Lions are majestic big cats known as the "king of the jungle," recognized for their powerful roars and social pride dynamics.</p>
+                </li>
+                <li class="list-group-item">
+                    <h5>Penguin</h5>
+                    <p>Penguins are flightless birds adapted to life in the water, known for their tuxedo-like appearance and ability to thrive in cold climates.</p>
+                </li>
+                <li class="list-group-item">
+                    <h5>Koala</h5>
+                    <p>Koalas are marsupials native to Australia, known for their cuddly appearance and eucalyptus diet.</p>
+                </li>
+                <li class="list-group-item">
+                    <h5>Hummingbird</h5>
+                    <p>Hummingbirds are tiny, colorful birds capable of hovering in place while feeding on nectar with their long, slender beaks.</p>
+                </li>
+                <li class="list-group-item">
+                    <h5>Wolf</h5>
+                    <p>Wolves are highly social and intelligent canines that live in packs. They are known for their teamwork and hunting prowess.</p>
+                </li>
+                <li class="list-group-item">
+                    <h5>Sea Turtle</h5>
+                    <p>Sea turtles are ancient reptiles that inhabit the oceans, playing a vital role in marine ecosystems and known for their long migrations.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="signin" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Sign In</h2>
+            <div class="form-container">
+                <form>
+                    <div class="mb-3">
+                        <label for="signinEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="signinEmail" placeholder="Enter your email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="signinPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="signinPassword" placeholder="Enter your password">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Sign In</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="signup" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Sign Up</h2>
+            <div class="form-container">
+                <form>
+                    <div class="mb-3">
+                        <label for="signupName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="signupName" placeholder="Enter yourname">
+ </div>
+ <div class="mb-3">
+ <label for="signupEmail" class="form-label">Email address</label>
+       <input type="email" class="form-control" id="signupEmail" placeholder="Enter your email"> 
+</div> 
+
+<div class="mb-3"> 
+<label for="signupPassword" class="form-label">Password</label>
+ <input type="password" class="form-control" id="signupPassword" placeholder="Create a password">
+ </div>
+ <div class="mb-3"> 
+<label for="signupConfirmPassword" class="form-label">Confirm Password</label>
+ <input type="password" class="form-control" id="signupConfirmPassword" placeholder="Confirm your password"> 
+</div> 
+<button type="submit" class="btn btn-success w-100">Sign Up</button>
+ </form> 
+</div>
+ </div> 
+</section>
+
+<button class="floating-btn" onclick="scrollToTop()">
+    <i class="bi bi-arrow-up"></i>
+    <span style='font-size:45px;'>&#129081;</span>
+</button>
+
+<footer class="text-center py-3 bg-dark text-light">
+    <p>&copy; 2024 Environmental Encyclopedia. All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".nav-link").on("click", function (event) {
+            event.preventDefault();
+            const target = $(this).attr("href");
+            $("html, body").animate({
+                scrollTop: $(target).offset().top - 60
+            }, 800);
+        });
+    });
+
+    function scrollToTop() {
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+    }
+</script>
+</body> 
+</html>
